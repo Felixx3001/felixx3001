@@ -8,6 +8,12 @@ theme: null
 baseurl: ""
 url: ""
 
+# GitHub 仓库信息
+github:
+  repository_url: https://github.com/Felixx3001/felixx3001
+  source:
+    branch: main
+
 # debug:
 #   compress: true
 #   dist: false
