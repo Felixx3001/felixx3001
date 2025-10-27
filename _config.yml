@@ -1,7 +1,12 @@
-title: jekyll-rtd-theme
-description: Just another documentation theme compatible with GitHub Pages
+title: Felix's Dev Universe
+description: Rust Developer | AI Enthusiast | Open Source Contributor
 
+# 使用本地主题
 theme: null
+
+# 基础URL配置（GitHub Pages会自动设置）
+baseurl: ""
+url: ""
 
 # debug:
 #   compress: true
@@ -15,6 +20,8 @@ plugins:
   - jemoji
   - jekyll-avatar
   - jekyll-mentions
+  - jekyll-feed
+  - jekyll-seo-tag
 
 exclude:
   - Makefile

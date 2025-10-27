@@ -14,23 +14,33 @@
    git push origin main
    ```
 
-2. **在 GitHub 启用 Pages**
+2. **⚠️ 重要：在 GitHub 启用 Actions 部署**
    - 访问你的仓库：`https://github.com/Felixx3001/felixx3001`
    - 点击 `Settings` > `Pages`
-   - Source 选择 `main` 分支
-   - 点击 `Save`
+   - **Source 选择**: `GitHub Actions` （⚠️ 不是分支！）
+   - 无需点击 Save，选择后会自动生效
 
 3. **等待构建完成**
-   - GitHub 会自动构建（约2-5分钟）
-   - 查看 `Actions` 标签页了解构建状态
+   - 点击仓库顶部的 `Actions` 标签页
+   - 查看 "Deploy Jekyll site to Pages" 工作流
+   - 等待绿色勾号 ✅（约2-3分钟）
 
 4. **访问你的网站**
    - `https://felixx3001.github.io/felixx3001/`
-   - 或你的自定义域名（如果配置了CNAME）
+   - 或在 Settings > Pages 中查看网站 URL
 
-## 📋 方法二：本地预览（需要安装环境）
+> 💡 **为什么要用 GitHub Actions?**  
+> 这个项目使用自定义 Jekyll 主题，需要完整构建环境。GitHub Actions 会自动：
+> - 安装 Ruby 和依赖
+> - 构建 Jekyll 网站
+> - 部署到 Pages
+> - 确保所有特效正常工作
 
-如果想在推送前预览效果，需要安装以下环境：
+---
+
+## 📋 方法二：本地预览（可选，仅用于开发测试）
+
+⚠️ **注意**: 本地预览可能看不到完整效果，建议直接部署到 GitHub Pages。
 
 ### Windows 安装步骤：
 
