@@ -85,7 +85,7 @@ impl Developer {
 
 <div align="center">
   
-  <img src="https://github-profile-trophy.vercel.app/?username=Felixx3001&theme=radical&no-frame=true&no-bg=false&margin-w=4&row=1" alt="trophy" />
+  <img src="https://github-profile-trophy.vercel.app/?username=Felixx3001&theme=radical&no-frame=false&no-bg=false&margin-w=4&column=7" alt="trophy" />
   
   <br><br>
   
@@ -143,9 +143,9 @@ impl Developer {
 
 <br>
 
-### 🐍 Contribution Snake
+### 🐍 Contribution Graph
 
-<img src="https://raw.githubusercontent.com/Felixx3001/Felixx3001/output/github-contribution-grid-snake-dark.svg" alt="snake animation" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Felixx3001&custom_title=Contribution%20Graph&bg_color=0d1117&color=e60073&line=23a6d5&point=23d5ab&area_color=23d5ab&title_color=e60073&area=true&hide_border=true" alt="contribution graph"/>
 
 <br>
 

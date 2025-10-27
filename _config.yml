@@ -36,3 +36,14 @@ exclude:
   - package-lock.json
   - webpack.config.js
   - jekyll-rtd-theme.gemspec
+  - vendor/
+  - .bundle/
+  - .git/
+  - .github/
+  - QUICK_START.md
+  - DEPLOY.md
+  - EFFECTS.md
+  - VISUAL_PREVIEW.md
+  - SNAKE_SETUP.md
+  - FIX_SUMMARY.md
+  - README01.md
