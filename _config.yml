@@ -28,6 +28,7 @@ plugins:
   - jekyll-mentions
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-gist
 
 exclude:
   - Makefile
@@ -53,3 +54,6 @@ exclude:
   - SNAKE_SETUP.md
   - FIX_SUMMARY.md
   - README01.md
+  - test/
+  - test_long/
+  - deploy.ps1

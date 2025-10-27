@@ -8,4 +8,5 @@ group :jekyll_plugins do
   gem "jemoji"
   gem "jekyll-avatar"
   gem "jekyll-mentions"
+  gem "jekyll-gist"
 end
