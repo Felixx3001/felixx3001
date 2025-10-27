@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Felix's Dev Universe - Rust Developer | AI Enthusiast | Open Source Contributor">
+    <meta name="author" content="Felix">
+    <title>Felix's Dev Universe</title>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: #e60073;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 粒子背景 */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        /* 星星背景 */
+        .star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 内容卡片 */
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 标题样式 */
+        h1, h2, h3 {
+            background: linear-gradient(45deg, #e60073, #23a6d5, #23d5ab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            margin: 20px 0;
+            animation: neonGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes neonGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(230, 0, 115, 0.6));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(230, 0, 115, 0.8));
+            }
+        }
+
+        h1 { font-size: 3em; text-align: center; }
+        h2 { font-size: 2em; border-left: 5px solid #e60073; padding-left: 15px; }
+        h3 { font-size: 1.5em; }
+
+        /* 徽章容器 */
+        .badges {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .badges img {
+            margin: 5px;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .badges img:hover {
+            transform: translateY(-5px) scale(1.05);
+            filter: drop-shadow(0 8px 16px rgba(230, 0, 115, 0.4));
+        }
+
+        /* 代码块 */
+        pre {
+            background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            position: relative;
+            border-left: 5px solid;
+            animation: rainbowBorder 5s linear infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes rainbowBorder {
+            0% { border-left-color: #ff0000; }
+            14% { border-left-color: #ff7f00; }
+            28% { border-left-color: #ffff00; }
+            42% { border-left-color: #00ff00; }
+            57% { border-left-color: #0000ff; }
+            71% { border-left-color: #4b0082; }
+            85% { border-left-color: #9400d3; }
+            100% { border-left-color: #ff0000; }
+        }
+
+        code {
+            color: #fff;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* 表格 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #e60073, #23a6d5);
+            color: white;
+            padding: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        tr:hover {
+            background: linear-gradient(90deg, rgba(230, 0, 115, 0.1), rgba(35, 166, 213, 0.1));
+            transform: scale(1.02);
+        }
+
+        /* 统计卡片 */
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stats-container img {
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-container img:hover {
+            transform: scale(1.03) translateY(-10px);
+            box-shadow: 
+                0 0 30px rgba(230, 0, 115, 0.6),
+                0 0 50px rgba(35, 166, 213, 0.4),
+                0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 按钮 */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 5px;
+            background: linear-gradient(135deg, #e60073, #23a6d5);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 0, 115, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(230, 0, 115, 0.6);
+        }
+
+        /* 回到顶部按钮 */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e60073, #23a6d5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        /* 波纹效果 */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            width: 20px;
+            height: 20px;
+            animation: ripple 1s;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .content-card {
+                padding: 20px;
+            }
+            
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            
+            .stats-container img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* 加载动画 */
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5em;
+            background: linear-gradient(45deg, #e60073, #23a6d5, #23d5ab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* 自定义光标 */
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="12" cy="12" r="8" fill="%23e60073" opacity="0.6"/></svg>'), auto;
+        }
+
+        a, button {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="12" cy="12" r="8" fill="%2323a6d5" opacity="0.8"/></svg>'), pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js"></div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 顶部横幅 -->
+        <div class="content-card" style="text-align: center;">
+            <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Felix's%20Dev%20Universe&fontSize=60&fontColor=fff&animation=fadeIn&fontAlignY=38&desc=Rust%20%7C%20AI%20%7C%20Open%20Source&descAlignY=55&descAlign=50" style="width: 100%; border-radius: 20px; margin-bottom: 20px;">
+            
+            <h1>
+                <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35" style="vertical-align: middle;">
+                Hey there, I'm Felix!
+                <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35" style="vertical-align: middle;">
+            </h1>
+
+            <div class="badges">
+                <img src="https://komarev.com/ghpvc/?username=Felixx3001&label=Profile%20views&color=blueviolet&style=flat" alt="profile views">
+                <img src="https://img.shields.io/github/followers/Felixx3001?label=Followers&style=social" alt="followers">
+                <img src="https://img.shields.io/github/stars/Felixx3001?label=Stars&style=social" alt="stars">
+            </div>
+
+            <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=2800&pause=2000&color=E60073&center=true&vCenter=true&width=940&lines=Welcome+to+my+GitHub+Universe!+%F0%9F%8C%8C;Rust+Developer+%F0%9F%A6%80;AI+Enthusiast+%F0%9F%A4%96;Open+Source+Contributor+%E2%9C%A8;Let's+Build+Amazing+Things!+%F0%9F%9A%80" alt="Typing SVG" style="max-width: 100%;">
+        </div>
+
+        <!-- Quick Intro -->
+        <div class="content-card">
+            <h2>🎯 Quick Intro</h2>
+            <pre><code><span style="color: #569cd6;">struct</span> Developer {
+    name: <span style="color: #ce9178;">&'static str</span>,
+    interests: <span style="color: #4ec9b0;">Vec</span>&lt;<span style="color: #ce9178;">&'static str</span>&gt;,
+    current_focus: <span style="color: #ce9178;">&'static str</span>,
+    collaboration: <span style="color: #ce9178;">&'static str</span>,
+}
+
+<span style="color: #569cd6;">impl</span> Developer {
+    <span style="color: #569cd6;">fn</span> <span style="color: #dcdcaa;">new</span>() -> <span style="color: #569cd6;">Self</span> {
+        <span style="color: #569cd6;">Self</span> {
+            name: <span style="color: #ce9178;">"Felix"</span>,
+            interests: <span style="color: #dcdcaa;">vec!</span>[<span style="color: #ce9178;">"Rust 🦀"</span>, <span style="color: #ce9178;">"AI 🤖"</span>, <span style="color: #ce9178;">"Systems Programming 💻"</span>],
+            current_focus: <span style="color: #ce9178;">"Building blazing fast AI applications with Rust"</span>,
+            collaboration: <span style="color: #ce9178;">"Open to innovative Rust & AI projects!"</span>,
+        }
+    }
+    
+    <span style="color: #569cd6;">fn</span> <span style="color: #dcdcaa;">say_hello</span>(&<span style="color: #569cd6;">self</span>) {
+        <span style="color: #dcdcaa;">println!</span>(<span style="color: #ce9178;">"🚀 Let's build something amazing together!"</span>);
+    }
+}</code></pre>
+        </div>
+
+        <!-- What I'm Up To -->
+        <div class="content-card">
+            <h2>💡 What I'm Up To</h2>
+            <table>
+                <tr>
+                    <th style="width: 150px;">Category</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>🔨 Building</td>
+                    <td>High-performance AI systems with Rust</td>
+                </tr>
+                <tr>
+                    <td>📚 Learning</td>
+                    <td>Deep Learning • WASM • Async Rust • LLM Integration</td>
+                </tr>
+                <tr>
+                    <td>🤝 Open to</td>
+                    <td>Collaborating on Rust frameworks & AI tools</td>
+                </tr>
+                <tr>
+                    <td>💌 Reach me</td>
+                    <td><code>felix@example.com</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Technologies & Tools -->
+        <div class="content-card">
+            <h2>🔧 Technologies & Tools</h2>
+            <h3>🌟 Core Skills</h3>
+            <p><strong>Languages:</strong> <code>Rust</code> <code>Python</code> <code>TypeScript</code> <code>C++</code> <code>Go</code></p>
+            <p><strong>AI/ML Stack:</strong> <code>TensorFlow</code> <code>PyTorch</code> <code>Hugging Face</code> <code>LangChain</code> <code>ONNX</code></p>
+            <p><strong>Rust Ecosystem:</strong> <code>Tokio</code> <code>Actix</code> <code>Diesel</code> <code>Serde</code> <code>Wasm-bindgen</code> <code>Candle</code></p>
+            <p><strong>Tools & Platforms:</strong> <code>Docker</code> <code>Kubernetes</code> <code>Git</code> <code>Linux</code> <code>Azure</code> <code>AWS</code></p>
+        </div>
+
+        <!-- GitHub Analytics -->
+        <div class="content-card">
+            <h2>📊 GitHub Analytics</h2>
+            <div class="stats-container">
+                <img src="https://github-profile-trophy.vercel.app/?username=Felixx3001&theme=radical&no-frame=false&no-bg=false&margin-w=4&column=7" alt="trophy" style="width: 100%; max-width: 900px;">
+            </div>
+            <div class="stats-container">
+                <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Felixx3001&show_icons=true&theme=radical&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=e60073&icon_color=23a6d5&text_color=ffffff" alt="stats">
+                <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Felixx3001&layout=compact&langs_count=8&theme=radical&hide_border=true&bg_color=0d1117&title_color=e60073&text_color=ffffff" alt="languages">
+            </div>
+            <div class="stats-container">
+                <img src="https://github-readme-streak-stats.herokuapp.com/?user=Felixx3001&theme=radical&hide_border=true&background=0d1117&ring=e60073&fire=e60073&currStreakLabel=e60073" alt="streak stats" style="width: 100%; max-width: 500px;">
+            </div>
+            <div class="stats-container">
+                <img src="https://github-readme-activity-graph.vercel.app/graph?username=Felixx3001&theme=react-dark&hide_border=true&area=true&bg_color=0d1117&color=e60073&line=23a6d5&point=23d5ab" alt="activity graph" style="width: 100%; max-width: 900px;">
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="content-card">
+            <h2>🏆 Achievements</h2>
+            <pre><code>⭐ 500+ GitHub Stars Earned  │  🔥 100+ Day Contribution Streak
+🚀 10+ Open Source Projects  │  🤝 50+ Pull Requests Merged
+💻 1000+ Commits This Year   │  🌟 Contributing to AI & Rust</code></pre>
+            <div class="stats-container">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Felixx3001&theme=radical" alt="profile summary" style="width: 100%; max-width: 900px;">
+            </div>
+            <div class="stats-container">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Felixx3001&theme=radical" alt="repos per language">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Felixx3001&theme=radical" alt="most commit language">
+            </div>
+        </div>
+
+        <!-- Let's Connect -->
+        <div class="content-card" style="text-align: center;">
+            <h2>📫 Let's Connect</h2>
+            <div style="margin: 30px 0;">
+                <a href="mailto:felix@example.com" class="btn"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://linkedin.com/in/felix" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://twitter.com/felix" class="btn"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://felix.dev" class="btn"><i class="fas fa-blog"></i> Blog</a>
+            </div>
+            
+            <h3>💭 Random Dev Quote</h3>
+            <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical" alt="dev quote" style="max-width: 100%; margin: 20px 0;">
+            
+            <h3>📈 Contribution Graph</h3>
+            <img src="https://github-readme-activity-graph.vercel.app/graph?username=Felixx3001&custom_title=Contribution%20Graph&bg_color=0d1117&color=e60073&line=23a6d5&point=23d5ab&area_color=23d5ab&title_color=e60073&area=true&hide_border=true" alt="contribution graph" style="width: 100%; max-width: 900px; margin: 20px 0;">
+            
+            <p style="font-size: 1.5em; margin: 30px 0;">
+                <strong>✨ Open to interesting projects and collaborations! ✨</strong>
+            </p>
+            
+            <img src="https://komarev.com/ghpvc/?username=Felixx3001&label=Total%20Profile%20Views&color=e60073&style=for-the-badge" alt="total views">
+        </div>
+
+        <!-- Footer -->
+        <div class="content-card" style="text-align: center;">
+            <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer&text=Thanks%20for%20visiting!&fontSize=30&fontColor=fff&animation=twinkling" style="width: 100%; border-radius: 20px;">
+        </div>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ⬆️
+    </button>
+
+    <script>
+        // 初始化粒子效果
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ['#e60073', '#23a6d5', '#23d5ab', '#ee7752'] },
+                shape: { type: 'circle' },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: { enable: true, speed: 4, size_min: 0.1, sync: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: { enable: true, rotateX: 600, rotateY: 1200 }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'grab' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 200, line_linked: { opacity: 1 } },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // 创建星星
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(star);
+        }
+
+        // 点击波纹效果
+        document.addEventListener('click', function(e) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = e.clientX - 10 + 'px';
+            ripple.style.top = e.clientY - 10 + 'px';
+            document.body.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 1000);
+        });
+
+        // 鼠标轨迹粒子
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.9) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = e.clientX + 'px';
+                particle.style.top = e.clientY + 'px';
+                particle.style.width = '5px';
+                particle.style.height = '5px';
+                particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '9999';
+                particle.style.animation = 'fadeOut 1s forwards';
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
+            }
+        });
+
+        // 淡出动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                    transform: translateY(-50px) scale(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 回到顶部按钮显示/隐藏
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        // 页面加载动画
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 1s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        console.log('🎨 酷炫特效已加载！Enjoy your awesome GitHub Page! 🚀');
+    </script>
+</body>
+</html>
