@@ -117,4 +117,3 @@ impl Developer {
 **✨ Open to interesting projects and collaborations! ✨**
 
 </div>
-1
