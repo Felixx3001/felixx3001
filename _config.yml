@@ -1,59 +1,23 @@
+# Felix's Dev Universe - Simple HTML GitHub Page
+
 title: Felix's Dev Universe
 description: Rust Developer | AI Enthusiast | Open Source Contributor
 
-# 使用本地主题
+# 禁用 Jekyll 主题，使用纯 HTML
 theme: null
 
-# 基础URL配置（GitHub Pages会自动设置）
+# 基础URL配置
 baseurl: ""
-url: ""
+url: "https://felixx3001.github.io"
 
-# GitHub 仓库信息
-github:
-  repository_url: https://github.com/Felixx3001/felixx3001
-  source:
-    branch: main
-
-# debug:
-#   compress: true
-#   dist: false
-#   shortcodes: true
-
-readme_index:
-  with_frontmatter: true
-
-plugins:
-  - jemoji
-  - jekyll-avatar
-  - jekyll-mentions
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-gist
-
+# 最小化排除列表
 exclude:
-  - Makefile
-  - CNAME
-  - LICENSE
-  - update.sh
   - Gemfile
   - Gemfile.lock
-  - requirements.txt
-  - node_modules
-  - package.json
-  - package-lock.json
-  - webpack.config.js
-  - jekyll-rtd-theme.gemspec
+  - README.md
+  - LICENSE
+  - deploy.ps1
   - vendor/
   - .bundle/
   - .git/
   - .github/
-  - QUICK_START.md
-  - DEPLOY.md
-  - EFFECTS.md
-  - VISUAL_PREVIEW.md
-  - SNAKE_SETUP.md
-  - FIX_SUMMARY.md
-  - README01.md
-  - test/
-  - test_long/
-  - deploy.ps1

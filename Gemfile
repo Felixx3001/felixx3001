@@ -1,12 +1,4 @@
 source "https://rubygems.org"
 
-gemspec
-
-group :jekyll_plugins do
-  gem "jekyll-feed"
-  gem "jekyll-seo-tag"
-  gem "jemoji"
-  gem "jekyll-avatar"
-  gem "jekyll-mentions"
-  gem "jekyll-gist"
-end
+# GitHub Pages gem - 包含所有需要的依赖
+gem "github-pages", group: :jekyll_plugins
