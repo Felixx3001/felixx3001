@@ -1,37 +1,42 @@
 <!-- 酷炫特效样式 -->
 <style>
-  /* 动画渐变背景 */
+  /* 动画渐变背景 - 使用 !important 确保优先级 */
   @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
 
-  body {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+  body,
+  body.container {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) !important;
+    background-size: 400% 400% !important;
+    animation: gradientBG 15s ease infinite !important;
+    min-height: 100vh !important;
   }
 
+  .content-wrap,
   .page-content {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    margin: 20px !important;
+    padding: 20px !important;
   }
 
   /* 霓虹灯效果 */
   @keyframes neonGlow {
     0%, 100% {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073 !important;
     }
     50% {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073 !important;
     }
   }
 
-  h1, h2 {
-    animation: neonGlow 2s ease-in-out infinite;
+  h1, h2, .markdown-body h1, .markdown-body h2 {
+    animation: neonGlow 2s ease-in-out infinite !important;
   }
 
   /* 悬浮卡片动画 */
